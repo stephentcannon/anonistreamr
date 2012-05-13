@@ -1,0 +1,15 @@
+<template name="post">
+   <div class="row-fluid">
+      <div class="well" style="{{get_poststyle}}">
+        <div class="cp">{{this.post}}<br />
+          {{#if this.twitter_id_str}}
+            <div id="tw">
+              <img id="tbird" src="/img/bird_16_blue.png" style="height:{{get_imgheight}}px;">
+              <a class="rt" href="https://twitter.com/intent/retweet?tweet_id={{this.twitter_id_str}}" title="Reweet">&nbsp;</a><a class="fav" href="https://twitter.com/intent/favorite?tweet_id={{this.twitter_id_str}}" title="Favorite">&nbsp;</a>
+              <a class="fb">&nbsp;</a>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+</template>

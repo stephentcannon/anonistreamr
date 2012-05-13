@@ -1,0 +1,38 @@
+ <template name="addaquestion">
+  <div class="modal hide fade" id="AddAQuestionDialog">
+    <div class="modal-header">
+      <a href="#" class="close" data-dismiss="modal">&times;</a>
+      <h1>add a question</h1>
+    </div>
+    <div class="modal-body">
+      <p>wanna add a question? go ahead...maybe we will add it!</p>
+      <div id="alert-question" class="alert hide fade in">
+        <a class="close" href="#">×</a>
+        <strong><span id="alert-title-question"></span></strong> <span id="alert-message-question"></span>
+      </div>
+      <form class"form-horizontal" id="addaquestion-form">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="email">your email</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="email" name="email" maxlength="100">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="question">the question</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="question" name="question" maxlength="140">
+            </div>
+          </div>
+          <div id="buttons-question" class="form-actions">
+            <button id="btnAddAQuestion" name="btnAddAQuestion" type="button" class="btn btn-primary">submit</button>
+            <button type="reset" class="btn">reset</button>
+          </div>
+          <div id="progress-question" class="progress progress-striped active hide">
+            <div id="bar-question" class="bar" style="width: 33%;"></div>
+          </div> 
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</template>

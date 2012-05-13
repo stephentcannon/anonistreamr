@@ -1,0 +1,120 @@
+/* CSS declarations go here */
+body {
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+
+input {
+	font-size:18px;
+	width: 400px;
+}
+
+footer.container.navbar-fixed-bottom {
+	top: auto;
+	bottom: 0;
+	background-color: #FFFFFF;
+	width: 100%;
+	padding-left: 30px;
+}
+
+.cp {
+	text-overflow:ellipsis;
+	word-wrap: break-word;
+	word-wrap: break-all;
+  -moz-hyphens:auto; 
+  -webkit-hyphens:auto; 
+  -o-hyphens:auto; 
+  hyphens:auto; 
+  overflow-wrap:hyphenate;
+  height: auto;
+  display: inline;
+}
+
+#title{
+	text-indent: 45px;
+	background-image:url('/img/logo.png');
+	background-repeat:no-repeat;
+	background-position:left center;
+}
+
+#tw a {
+	background-image:url('/img/everything-spritev2.png');
+	background-repeat:no-repeat;
+	display: inline-block;
+	width: 16px;
+}
+
+#tw {
+	padding-top:20px;
+}
+
+#tw img { vertical-align:top }
+
+#tw a.rt{
+	background-position: -80px 0px;
+	text-decoration: none;
+}
+
+#tw a:visited.rt{
+	background-position: -80px 0px;
+}
+
+#tw a:hover.rt {
+	background-position: -96px 0px;
+}
+
+#tw a:active.rt {
+	background-position: -112px 0px;
+}
+
+#tw a.fav{
+	background-position: -32px 0px;
+	text-decoration: none;
+}
+
+#tw a:visited.fav{
+	background-position: -32px 0px;
+}
+
+#tw a:hover.fav {
+	background-position: -48px 0px;
+}
+
+#tw a:active.fav {
+	background-position: -64px 0px;
+}
+
+
+#tw a.fb{
+	background-position: -179px 0px;
+	text-decoration: none;
+	width: 51px;
+}
+#tw a:visited.fb{
+	background-position: -179px 0px;
+	width: 51px;
+}
+
+#tw a:hover.fb {
+	background-position: -128px 0px;
+	width: 51px;
+}
+
+#tw a:active.fb {
+	background-position: -128px 0px;
+	width: 51px;
+}
+/*-180 for gray*/
+.twitter-share-button, .twitter-follow-button, .fb-like, .tbird { vertical-align:top }
+
+#contactUsDialog .modal-body 
+{
+	max-height: 100%;
+	/*overflow: auto;*/
+	/*max-height: 550px;*/
+	/*overflow-y: hidden;*/
+	/* max-height:90%;
+  margin-top:-45%; */
+}

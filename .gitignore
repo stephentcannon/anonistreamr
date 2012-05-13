@@ -1,0 +1,4 @@
+# you can .git/info/excluse this as well
+config.js
+TODO.md
+start.sh

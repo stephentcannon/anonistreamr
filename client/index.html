@@ -1,0 +1,54 @@
+<head>
+  <meta charset="utf-8">
+  <title>anonistream.in - real-time anonymous social stream of consciousness</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="listr">
+  <meta name="keywords" content="social, real-time, real time, real, time, anonymous, stream of consciousness">
+  <meta name="description" content="anonistream.in...real-time anonymous social stream of consciousness...">
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=387284154643351";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">
+  <meta property="og:title" content="anonistream.in" />
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="http://anonistream.in" />
+  <meta property="og:image" content="http://anonistream.in/img/logo.png" />
+  <meta property="og:site_name" content="anonistream.in" />
+  <meta property="fb:admins" content="562738942" />
+</head>
+
+<body>
+	<div id="fb-root"></div>
+  <div class="container-fluid">
+		<div class="row-fluid">
+      <div class="span12">
+				{{> entry}}
+				{{> posts}}
+			</div><!--/span-->
+    </div><!--/row-->  
+	</div><!--/.fluid-container-->
+  <footer class="container navbar navbar-fixed-bottom">
+      {{> footer}}
+  </footer>
+  {{> about}}
+  {{> privacy}}
+  {{> tos}}
+  {{> addaquestion}}
+  {{> contactus}}
+  {{> subscribe}}
+</body>
+
