@@ -1,3 +1,4 @@
+// RELEASE: branch: fixemail
 var require = __meteor_bootstrap__.require;
 
 var path = require("path");
@@ -21,6 +22,71 @@ else{
   console.log('WARNING Twit not loaded. Node_modules not found');
 }
 var T = new Twit(config.twit.options);
+
+
+
+/*
+var email;
+var emailjsPath = 'node_modules/emailjs';
+var publicEmailJSPath = path.resolve(base+'/public/'+emailjsPath);
+var staticEmailJSPath = path.resolve(base+'/static/'+emailjsPath);
+if (path.existsSync(publicEmailJSPath)){
+  email = require(publicEmailJSPath);
+}
+else if (path.existsSync(staticEmailJSPath)){
+  email = require(staticEmailJSPath);
+}
+else{
+  console.log('WARNING EmailJs not loaded. Node_modules not found');
+}
+
+var server  = email.server.connect(config.mailjs.server_options);
+*/
+function sendEmail(subject, body, htmlbody, to, from, bcc){
+  /*
+  var headers = {
+    subject: subject,
+    text:    body, 
+    to:      to,
+    from:    from, 
+    bcc:     bcc, 
+  };
+  var message = email.message.create(headers);
+  // attach an alternative html email for those with advanced email clients
+  message.attach({data: htmlbody, alternative:true});
+  server.send(message, function(err, message) { 
+    //TODO implement logging of errors
+    //console.log(err || message); 
+  });
+  */
+}
+
+Meteor.methods({
+  insertPost: insertPost,
+  insertContactUs: insertContactUs,
+  insertAddAQuestion: insertAddAQuestion,
+  insertSubscribe: insertSubscribe
+});
+
+function insertPost(args) {
+  this.unblock;
+  if(args) { 
+    if(!Posts.isQuestion(args.text)){
+      post_text = args.text.slice(0,140);
+      var ts = Date.now();  
+      id =  Posts.insert({
+        post: post_text,
+        created: ts
+      });
+      if(id){
+        doSocialPosts(post_text, id);
+        //return result = 'done';
+      } else {
+        //return result = 'did not work';
+      }
+    }
+  }
+}
 
 
 function doTweet(post_text, id){
@@ -63,65 +129,6 @@ function doSocialPosts(post_text, id){
     doTweet(post_text, id);
   }
   
-}
-
-var email;
-var emailjsPath = 'node_modules/emailjs';
-var publicEmailJSPath = path.resolve(base+'/public/'+emailjsPath);
-var staticEmailJSPath = path.resolve(base+'/static/'+emailjsPath);
-if (path.existsSync(publicEmailJSPath)){
-  email = require(publicEmailJSPath);
-}
-else if (path.existsSync(staticEmailJSPath)){
-  email = require(staticEmailJSPath);
-}
-else{
-  console.log('WARNING EmailJs not loaded. Node_modules not found');
-}
-
-var server  = email.server.connect(config.mailjs.server_options);
-function sendEmail(subject, body, htmlbody, to, from, bcc){
-  var headers = {
-    subject: subject,
-    text:    body, 
-    to:      to,
-    from:    from, 
-    bcc:     bcc, 
-  };
-  var message = email.message.create(headers);
-  // attach an alternative html email for those with advanced email clients
-  message.attach({data: htmlbody, alternative:true});
-  server.send(message, function(err, message) { 
-    //TODO implement logging of errors
-    //console.log(err || message); 
-  });
-}
-
-Meteor.methods({
-  insertPost: insertPost,
-  insertContactUs: insertContactUs,
-  insertAddAQuestion: insertAddAQuestion,
-  insertSubscribe: insertSubscribe
-});
-
-function insertPost(args) {
-  this.unblock;
-  if(args) { 
-    if(!Posts.isQuestion(args.text)){
-      post_text = args.text.slice(0,140);
-      var ts = Date.now();  
-      id =  Posts.insert({
-        post: post_text,
-        created: ts
-      });
-      if(id){
-        doSocialPosts(post_text, id);
-        //return result = 'done';
-      } else {
-        //return result = 'did not work';
-      }
-    }
-  }
 }
 
 function insertContactUs(params){
