@@ -57,16 +57,18 @@ function sendEmail(subject, body, htmlbody, to, from, bcc){
       text: body,
       html: htmlbody 
   }
-  smtpTransport.sendMail(mailOptions, function(error, response){
-    if(error){
-      console.log(error);
-    }else{
-      console.log("Message sent: " + response.message);
-      console.log("To: " + to);
-    }
-    // if you don't want to use this transport object anymore, uncomment following line
-    //smtpTransport.close(); // shut down the connection pool, no more messages
-  });
+  smtpTransport.sendMail(mailOptions 
+    //,function(error, response){
+      //if(error){
+       // console.log(error);
+      //}else{
+        //console.log("Message sent: " + response.message);
+        //console.log("To: " + to);
+      //}
+      // if you don't want to use this transport object anymore, uncomment following line
+      //smtpTransport.close(); // shut down the connection pool, no more messages
+    //}
+  );
 }
 
 Meteor.methods({
@@ -135,7 +137,7 @@ function doFBPost(post_text, id){
       } else {
         sendEmail('anonistream FB Post Error',
         'anonistream FB Post Error',
-        '<html><p>Post id: '+id+'></p><p>Error: '+error+'</p><p>Result:</p>'+JSON.stringify(result, 0, 4)+'</html>',
+        '<html><p>Post id: '+id+'</p><p>Error: '+error+'</p><p>Result:</p>'+JSON.stringify(result, 0, 4)+'</html>',
         config.email_to,
         config.email_from
         );
