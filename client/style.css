@@ -11,14 +11,6 @@ input {
 	width: 400px;
 }
 
-footer.container.navbar-fixed-bottom {
-	top: auto;
-	bottom: 0;
-	background-color: #FFFFFF;
-	width: 100%;
-	padding-left: 30px;
-}
-
 .cp {
 	text-overflow:ellipsis;
 	word-wrap: break-word;

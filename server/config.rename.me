@@ -21,11 +21,10 @@ config.twit.options = {
   access_token_secret:  ''
 }
 
-config.mailjs = {};
-config.mailjs.server_options  = {
-   user:    '', 
-   password:'', 
-   host:    '', 
-   ssl:     true
-};
-
+config.emailer = {};
+config.emailer.service = 'Gmail';
+config.emailer.user = '';
+config.emailer.pass = '';
+config.emailer.host = '';
+config.emailer.secureConnection = true; 
+config.emailer.port = 465; 

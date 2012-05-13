@@ -25,40 +25,48 @@ var T = new Twit(config.twit.options);
 
 
 
-/*
+
 var email;
-var emailjsPath = 'node_modules/emailjs';
-var publicEmailJSPath = path.resolve(base+'/public/'+emailjsPath);
-var staticEmailJSPath = path.resolve(base+'/static/'+emailjsPath);
-if (path.existsSync(publicEmailJSPath)){
-  email = require(publicEmailJSPath);
+var emailPath = 'node_modules/nodemailer';
+var publicEmailPath = path.resolve(base+'/public/'+emailPath);
+var staticEmailPath = path.resolve(base+'/static/'+emailPath);
+if (path.existsSync(publicEmailPath)){
+  emailer = require(publicEmailPath);
 }
-else if (path.existsSync(staticEmailJSPath)){
-  email = require(staticEmailJSPath);
+else if (path.existsSync(staticEmailPath)){
+  emailer = require(staticEmailPath);
 }
 else{
-  console.log('WARNING EmailJs not loaded. Node_modules not found');
+  console.log('WARNING Emailer not loaded. Node_modules not found');
 }
 
-var server  = email.server.connect(config.mailjs.server_options);
-*/
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = emailer.createTransport('SMTP',{
+    service: config.emailer.service,
+    auth: {
+        user: config.emailer.user,
+        pass: config.emailer.pass
+    }
+});
+
 function sendEmail(subject, body, htmlbody, to, from, bcc){
-  /*
-  var headers = {
-    subject: subject,
-    text:    body, 
-    to:      to,
-    from:    from, 
-    bcc:     bcc, 
-  };
-  var message = email.message.create(headers);
-  // attach an alternative html email for those with advanced email clients
-  message.attach({data: htmlbody, alternative:true});
-  server.send(message, function(err, message) { 
-    //TODO implement logging of errors
-    //console.log(err || message); 
+  var mailOptions = {
+      from: from,
+      to: to,
+      subject: subject,
+      text: body,
+      html: htmlbody 
+  }
+  smtpTransport.sendMail(mailOptions, function(error, response){
+    if(error){
+      console.log(error);
+    }else{
+      console.log("Message sent: " + response.message);
+      console.log("To: " + to);
+    }
+    // if you don't want to use this transport object anymore, uncomment following line
+    //smtpTransport.close(); // shut down the connection pool, no more messages
   });
-  */
 }
 
 Meteor.methods({
@@ -98,7 +106,14 @@ function doTweet(post_text, id){
           Posts.update({_id: id},   
           {$set: {twitter_id_str: reply.id_str}});
         }).run();
-      } 
+      } else {
+        sendEmail('anonistream Twitter Post Error',
+        'anonistream Twitter Post Error',
+        '<html><p>Post id: '+id+'></p><p>Error: '+JSON.stringify(err, 0, 4)+'</p></html>',
+        config.email_to,
+        config.email_from
+        );
+      }
     }
   );
 }
@@ -117,7 +132,14 @@ function doFBPost(post_text, id){
           {$set: {fb_id: content.id}});
         }).run();
 
-      } 
+      } else {
+        sendEmail('anonistream FB Post Error',
+        'anonistream FB Post Error',
+        '<html><p>Post id: '+id+'></p><p>Error: '+error+'</p><p>Result:</p>'+JSON.stringify(result, 0, 4)+'</html>',
+        config.email_to,
+        config.email_from
+        );
+      }
     });
 }
 
@@ -211,8 +233,8 @@ function insertSubscribe(params){
     });
     if(id){
       sendEmail('anonistream newsletter subscription confirmation', 
-        'Thank you for subscribing to the anonistream newsletter.  We will try to our hardest to bother you often...just kidding.\nIf you ever want to unsubscribe send us a check for a million dollars and a hand written note by carrier pigeon.\nJokes aside, you can unsubscribe in the newsletter footer.\nEnjoy...and do not print it out when you get it because a tree dies when you do.\nThanks,\nthe anonistream.in team',
-        '<html><h1>Thank you for subscribing to the anonistream newsletter.</h1><p>We will try to our hardest to bother you often...just kidding.</p><p>If you ever want to unsubscribe send us a check for a million dollars and a hand written note by carrier pigeon.<p>Enjoy...and do not print it out when you get it because a tree dies when you do.</p><p>Thanks,<br/>the anonistream.in team</p></html>',
+        'Thank you for subscribing to the anonistream newsletter.  We will try to our hardest to bother you often...just kidding.\nIf you ever want to unsubscribe send us a check for a million dollars and a hand written note by carrier pigeon.\nJokes aside, you can unsubscribe in the newsletter footer.\nEnjoy...and do not print out our newsletter when you get because a tree dies when you do.\nThanks,\nthe anonistream.in team',
+        '<html><h1>Thank you for subscribing to the anonistream newsletter.</h1><p>We will try to our hardest to bother you often...just kidding.</p><p>If you ever want to unsubscribe send us a check for a million dollars and a hand written note by carrier pigeon.<p>Enjoy...and do not print out our newsletter when you get it because a tree dies when you do.</p><p>Thanks,<br/>the anonistream.in team</p></html>',
         params.name+'<'+params.email+'>',
         config.email_from
       );
