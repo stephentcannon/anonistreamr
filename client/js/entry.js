@@ -95,7 +95,6 @@ function insertLocalPost(vtext){
 }
 
 function insertPost(){
-  this.is_simulation;
   // TODO not sure if this goes here
-  this.unblock;
+  this.unblock();
 }

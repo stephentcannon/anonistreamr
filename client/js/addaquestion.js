@@ -43,7 +43,6 @@ Template.addaquestion.events = {
 }
 
 function insertAddAQuestion(){
-  this.is_simulation;
   // TODO not sure if this goes here
-  this.unblock;
+  this.unblock();
 }

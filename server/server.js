@@ -79,7 +79,7 @@ Meteor.methods({
 });
 
 function insertPost(args) {
-  this.unblock;
+  this.unblock();
   if(args) { 
     if(!Posts.isQuestion(args.text)){
       post_text = args.text.slice(0,140);
@@ -156,7 +156,7 @@ function doSocialPosts(post_text, id){
 }
 
 function insertContactUs(params){
-  this.unblock;
+  this.unblock();
   if(params){
     ContactUs.validateParams(params);
     ContactUs.validateEmail(params.email);
@@ -191,7 +191,7 @@ function insertContactUs(params){
 }
 
 function insertAddAQuestion(params){
-  this.unblock;
+  this.unblock();
   if(params){
     AddAQuestion.validateParams(params);    
     AddAQuestion.validateEmail(params.email);
@@ -223,7 +223,7 @@ function insertAddAQuestion(params){
   }
 }
 function insertSubscribe(params){
-  this.unblock;
+  this.unblock();
   if(params){
     Subscribe.validateParams(params);
     Subscribe.validateEmail(params.email);

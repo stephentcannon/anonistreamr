@@ -43,7 +43,6 @@ Template.contactus.events = {
 }
 
 function insertContactUs(){
-  this.is_simulation;
   // TODO not sure if this goes here
-  this.unblock;
+  this.unblock();
 }
