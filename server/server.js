@@ -90,9 +90,9 @@ function insertPost(args) {
       });
       if(id){
         doSocialPosts(post_text, id);
-        //return result = 'done';
+        return result = 'Success';
       } else {
-        //return result = 'did not work';
+        return result = 'Failure';
       }
     }
   }

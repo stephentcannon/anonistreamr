@@ -1,4 +1,3 @@
-
 ////////// Helpers for in-place editing //////////
 
 // Returns an event_map key for attaching "ok/cancel" events to
@@ -38,7 +37,6 @@ var make_btnclick_handler = function(options) {
 
   return function (evt){
     if (evt.type === "click"){
-      //had to add messageBox for tis
       var postEntry = $("#messageBox");
       var postEntryValue = $("#messageBox").val();
       if (postEntryValue !== ""){
