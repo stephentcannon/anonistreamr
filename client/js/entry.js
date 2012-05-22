@@ -39,7 +39,7 @@ var make_btnclick_handler = function(options) {
     if (evt.type === "click"){
       var postEntry = $("#messageBox");
       var postEntryValue = $("#messageBox").val();
-      if (postEntryValue !== ""){
+      if (postEntryValue !== ""){d
         ok.call(this, postEntryValue, postEntry);
       }else{
         cancel.call(this, evt);
