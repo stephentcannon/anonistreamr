@@ -1,9 +1,5 @@
 Meteor.startup(function () {
-  _.each(['Posts', 'Questions', 'ContactUsFormPosts', 'AddAQuestion', 'Subscribe'], function(collection) {
-    _.each(['insert', 'update', 'remove'], function(method) {
-      Meteor.default_server.method_handlers['/' + collection + '/' + method] = function() {};
-    });
-  });
+  
   if(Questions.find().count() === 0 ){
     var ts = Date.now();
     var questions = [
@@ -353,11 +349,11 @@ Meteor.startup(function () {
    	for(i=0; i<126; i++){
    		var ts = Date.now();
     	Posts.insert({
-    		post: 'Test post #' +i, 
+    		post: 'Test post #' +i,
     		created: ts
     	});
    	}
-    console.log('bootstrapping test messages completed.');  
+    console.log('bootstrapping test messages completed.');
    }
    console.log('server running');
    **/
