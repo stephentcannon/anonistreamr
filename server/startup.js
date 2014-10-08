@@ -1,4 +1,5 @@
 Meteor.startup(function () {
+  console.log('Meteor.settings.post_social: ' + Meteor.settings.post_social);
   
   if(Questions.find().count() === 0 ){
     var ts = Date.now();
@@ -342,20 +343,19 @@ Meteor.startup(function () {
 
   // TODO comment out in production
   // used only to populate in testing env
-  /**
-   if(Posts.find().count() === 0) {
-    console.log('bootstrapping test messages.');
-    console.log('remove from /server/startup.js in prod');
-   	for(i=0; i<126; i++){
-   		var ts = Date.now();
-    	Posts.insert({
-    		post: 'Test post #' +i,
-    		created: ts
-    	});
-   	}
-    console.log('bootstrapping test messages completed.');
-   }
-   console.log('server running');
-   **/
 
+  // if(Posts.find().count() === 0) {
+  //   console.log('bootstrapping test messages.');
+  //   console.log('remove from /server/startup.js in prod');
+   	// for(i=0; i<126; i++){
+   	// 	var ts = Date.now();
+    // 	Posts.insert({
+    // 		post: 'Test post #' +i,
+    // 		created: ts
+    // 	});
+   	// }
+  //   console.log('bootstrapping test messages completed.');
+  // }
+  // console.log('server running');
+  
 });

@@ -1,5 +1,6 @@
-<template name="post">
-   <div class="row-fluid">
+<template name="posts">
+  {{#each posts}}
+    <div class="row-fluid">
       <div class="well" style="{{get_poststyle}}">
         <div class="cp">{{this.post}}<br />
           {{#if this.twitter_id_str}}
@@ -12,4 +13,5 @@
         </div>
       </div>
     </div>
+  {{/each}}
 </template>

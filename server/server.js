@@ -13,7 +13,8 @@ function insertPost(args) {
       var ts = Date.now();
       id =  Posts.insert({
         post: post_text,
-        created: ts
+        created: ts,
+        id: new Date().valueOf()
       });
       if(id){
         doSocialPosts(post_text, id);
@@ -75,7 +76,7 @@ function doFBPost(post_text, id){
 function doSocialPosts(post_text, id){
   //stubbed out to handle posts to all kinds of sites
   //not sure if these are going to destroy each other
-  if(config.post_social){
+  if(Meteor.settings.post_social){
     doFBPost(post_text, id);
     doTweet(post_text, id);
   }

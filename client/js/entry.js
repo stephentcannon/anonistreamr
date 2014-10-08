@@ -51,7 +51,7 @@ var make_btnclick_handler = function(options) {
 }
 
 Template.entry.events = {
-  'focus, blur': function (event) { 
+  'focus, blur': function (event) {
     $('#messageBox').css('color','#555');
     //.css('color','#000');
   }
@@ -74,13 +74,13 @@ Meteor.setInterval(autoUpdateQuestion, 5000);
 function autoUpdateQuestion(){
   if ( $("*:focus").is("input, button") ) {
     return;
-  } 
+  }
   updateQuestion();
 }
 
 function updateQuestion(){
   $('#messageBox').animate({color: '#FFFFFF'  }, 1000, 'linear', function(){
-    $('#messageBox').animate({ color: '#555' }, 1000, 'linear').val(Questions.getQuestion()); 
+    $('#messageBox').animate({ color: '#555' }, 1000, 'linear').val(Questions.getQuestion() + ' ');
   });
 
 }

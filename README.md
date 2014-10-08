@@ -24,9 +24,9 @@ Run or deploy:
     
     To run
     cd anonistream
-    mv config.rename.me config.js
-    edit config.js and set all settings
-    meteor 
+    mv settings.bak settings.json
+    vi settings.json
+    meteor --settings settings.json
 
     To deploy - after you have it running properly
     cd anonistream

@@ -8,17 +8,17 @@ body {
 
 input {
 	font-size:18px;
-	width: 400px;
+	width: 460px;
 }
 
 .cp {
 	text-overflow:ellipsis;
 	word-wrap: break-word;
 	word-wrap: break-all;
-  -moz-hyphens:auto; 
-  -webkit-hyphens:auto; 
-  -o-hyphens:auto; 
-  hyphens:auto; 
+  -moz-hyphens:auto;
+  -webkit-hyphens:auto;
+  -o-hyphens:auto;
+  hyphens:auto;
   overflow-wrap:hyphenate;
   height: auto;
   display: inline;
@@ -101,7 +101,7 @@ input {
 /*-180 for gray*/
 .twitter-share-button, .twitter-follow-button, .fb-like, .tbird { vertical-align:top }
 
-#contactUsDialog .modal-body 
+#contactUsDialog .modal-body
 {
 	max-height: 100%;
 	/*overflow: auto;*/
