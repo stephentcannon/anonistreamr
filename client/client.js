@@ -2,12 +2,12 @@ Meteor.subscribe("allposts");
 Meteor.subscribe("allquestions");
 
 //confirm required
-Meteor.methods({
-  insertContactUs: insertContactUs,
-  insertAddAQuestion: insertAddAQuestion,
-  insertSubscribe: insertSubscribe,
-  insertPost: insertPost
-});
+//Meteor.methods({
+  //insertContactUs: insertContactUs,
+  //insertAddAQuestion: insertAddAQuestion,
+  //insertSubscribe: insertSubscribe,
+  //insertPost: insertPost
+//});
 
 $(document).ready(
   function() {

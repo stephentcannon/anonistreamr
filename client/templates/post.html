@@ -7,8 +7,10 @@
             <div id="tw">
               <img id="tbird" src="/img/bird_16_blue.png">
               <a class="rt" href="https://twitter.com/intent/retweet?tweet_id={{this.twitter_id_str}}" title="Reweet">&nbsp;</a><a class="fav" href="https://twitter.com/intent/favorite?tweet_id={{this.twitter_id_str}}" title="Favorite">&nbsp;</a>
-              <a class="fb">&nbsp;</a>
             </div>
+          {{/if}}
+          {{#if this.fb_id}}
+            <div class="fb-like" data-href="https://www.facebook.com/anonistreamin/posts/{{this.fb_id}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
           {{/if}}
         </div>
       </div>

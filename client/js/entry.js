@@ -36,10 +36,11 @@ var make_btnclick_handler = function(options) {
   var cancel = options.cancel || function () {};
 
   return function (evt){
+    console.log(evt);
     if (evt.type === "click"){
       var postEntry = $("#messageBox");
       var postEntryValue = $("#messageBox").val();
-      if (postEntryValue !== ""){d
+      if (postEntryValue !== ""){
         ok.call(this, postEntryValue, postEntry);
       }else{
         cancel.call(this, evt);
@@ -62,6 +63,7 @@ Template.entry.events[okcancel_events('#messageBox')] = make_okcancel_handler({
     insertLocalPost(text);
   }
 });
+
 
 Template.entry.events[btnclick_events('#messageBtn')] = make_btnclick_handler({
   ok: function(text, event){
